@@ -1,40 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './App.css';
 
-// React State
-class Clock extends React.Component {
+class Tab extends React.Component {
   constructor(props) {
     super(props);
-    // 状态(数据) --> view
+
+    // 设置状态(数据)
     this.state = {
-      time: new Date().toLocaleTimeString(),
+      c1: 'content active',
+      c2: 'content',
     };
+
+    // 绑定this
+    this.clickEvent = this.clickEvent.bind(this);
+  }
+
+  clickEvent(e) {
+    let index = e.target.dataset.index;
+    if (index === '1') {
+      this.setState({
+        c1: 'content active',
+        c2: 'content',
+      });
+    } else {
+      this.setState({
+        c1: 'content',
+        c2: 'content active',
+      });
+    }
   }
 
   render() {
-    // this.state.time = new Date().toLocaleTimeString();
     return (
       <div>
-        <h1>当前时间：{this.state.time}</h1>
+        <button data-index="1" onClick={this.clickEvent}>
+          内容1
+        </button>
+        <button data-index="2" onClick={this.clickEvent}>
+          内容2
+        </button>
+        <div className={this.state.c1}>
+          <h1>内容1</h1>
+        </div>
+        <div className={this.state.c2}>
+          <h1>内容2</h1>
+        </div>
       </div>
     );
   }
-
-  // 生命周期函数 componentDidMount  组件渲染完成时调用
-  componentDidMount() {
-    setInterval(() => {
-      // 不要用这种方式
-      // this.state.time = new Date().toLocaleTimeString();
-
-      this.setState({
-        time: new Date().toLocaleTimeString(),
-      });
-    }, 1000);
-  }
 }
 
-ReactDOM.render(<Clock />, document.querySelector('#root'));
-
-// setInterval(() => {
-//   ReactDOM.render(<Clock />, document.querySelector('#root'));
-// }, 1000);
+ReactDOM.render(<Tab />, document.querySelector('#root'));

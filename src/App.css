@@ -1,7 +1,7 @@
-.font {
-  font-size: 32px;
+.content {
+  display: none;
 }
 
-.bg {
-  background-color: red;
+.content.active {
+  display: block;
 }
