@@ -1,44 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './App.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// const time = new Date().toLocaleTimeString();
+// const strTime = '现在的时间是：';
+// const element = (
+//   <div>
+//     <h1>Hello World!</h1>
+//     <h2>{strTime + time}</h2>
+//   </div>
+// );
 
-// 实现时刻的显示
-// function clock() {
-//   const time = new Date().toLocaleTimeString();
-//   const element = (
-//     <div>
-//       <h1>现在的时间是：{time}</h1>
-//     </div>
-//   );
-//   const root = document.querySelector('#root');
-//   ReactDOM.render(element, root);
-// }
+// const status = 0;
+// const element2 = (
+//   <div>
+//     <h1>今天是否隔离</h1>
+//     <h2>{status === 0 ? '隔离' : '不隔离'}</h2>
+//   </div>
+// );
 
-// clock();
+// const element2 = (
+//   <div>
+//     <h1>今天是否隔离</h1>
+//     <h2>{status === 0 ? <button>隔离</button> : <button>不隔离</button>}</h2>
+//   </div>
+// );
 
-// setInterval(clock, 1000);
+// html的样式类名要写为className，因为class在js中是关键词
+const bgColor = 'bgRed';
+const element = <div className={bgColor}>红色的背景颜色</div>;
 
-// react函数式组件
-function Clock(props) {
-  return (
-    <div>
-      <h1>现在的时间是：{props.date.toLocaleTimeString()}</h1>
-    </div>
-  );
-}
-
-function run() {
-  ReactDOM.render(<Clock date={new Date()} />, document.querySelector('#root'));
-}
-
-run();
-
-setInterval(run, 1000);
+// ReactDOM.render(element, document.querySelector('#root'));
+ReactDOM.render(element, document.querySelector('#root'));
