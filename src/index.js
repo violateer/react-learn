@@ -1,31 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// 函数式组件
-// function ChildCom(props) {
-//   const subTitle = <span>函数式组件副标题</span>;
-//   const weather = props.weather;
-//   const isGo = weather === 'good' ? '出门' : '不出门';
-//   console.log(props);
-//   return (
-//     <div>
-//       <h1>函数式组件Hello World</h1>
-//       {subTitle}
-//       <p>{isGo}</p>
-//     </div>
-//   );
-// }
+// React State
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    // 状态(数据) --> view
+    this.state = {
+      time: new Date().toLocaleTimeString(),
+    };
+  }
 
-// 类组件
-class ChildCom extends React.Component {
   render() {
-    console.log(this.props);
+    this.state.time = new Date().toLocaleTimeString();
     return (
       <div>
-        <h1>类组件Hello World</h1>
+        <h1>当前时间：{this.state.time}</h1>
       </div>
     );
   }
 }
 
-ReactDOM.render(<ChildCom weather="good" />, document.querySelector('#root'));
+ReactDOM.render(<Clock />, document.querySelector('#root'));
+
+setInterval(() => {
+  ReactDOM.render(<Clock />, document.querySelector('#root'));
+}, 1000);
