@@ -1,3 +1,7 @@
-.bgRed {
+.font {
+  font-size: 32px;
+}
+
+.bg {
   background-color: red;
 }
